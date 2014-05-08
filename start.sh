@@ -9,4 +9,4 @@ echo "root:$ROOT_PASSWORD" | chpasswd
 echo "root login password: $ROOT_PASSWORD"
 
 # Launch supervisor
-CMD supervisord -n
+supervisord -n
