@@ -35,7 +35,7 @@ RUN ROOT_PASSWORD=`pwgen -c -n -1 12`; echo "root:$ROOT_PASSWORD" | chpasswd; ec
 #RUN apt-get install -y python-software-properties
 #RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 #RUN apt-get update
-RUN apt-get install -y qgis-mapserver
+RUN apt-get install -y qgis-mapserver qgis libcanberra-gtk-module
 
 EXPOSE 22
 EXPOSE 80
