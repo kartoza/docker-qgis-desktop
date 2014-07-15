@@ -31,12 +31,17 @@ RUN ROOT_PASSWORD=`pwgen -c -n -1 12`; echo "root:$ROOT_PASSWORD" | chpasswd; ec
 
 #-------------Application Specific Stuff ----------------------------------------------------
 
+RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu trusty main" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv 314DF160 
+RUN gpg --export --armor 314DF160 | sudo apt-key add -
 
+RUN apt-get -y update
 #RUN apt-get install -y python-software-properties
 #RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 #RUN apt-get update
-RUN apt-get install -y qgis-mapserver qgis libcanberra-gtk-module
 
+RUN apt-get install -y qgis-mapserver qgis libcanberra-gtk-module
+RUN apt-get purge
 EXPOSE 22
 EXPOSE 80
 
