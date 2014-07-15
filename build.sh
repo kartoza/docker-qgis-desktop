@@ -1,4 +1,4 @@
-docker.io build -t kartoza/qgis-server:latest .
+docker.io build -t kartoza/qgis-desktop:latest .
 mkdir -p $HOME/bin
 echo "# Next line added for running QGIS in docker" >> ${HOME}/.bashrc
 echo "export PATH=\${PATH}:\${HOME}/bin" >> ${HOME}/.bashrc

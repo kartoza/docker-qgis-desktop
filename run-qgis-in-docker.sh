@@ -10,6 +10,6 @@ docker.io run --name="qgis-desktop" \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=unix$DISPLAY \
-	kartoza/qgis-server:latest \
+	kartoza/qgis-desktop:latest \
 	/usr/bin/qgis
 xhost -
