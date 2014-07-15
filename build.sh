@@ -3,8 +3,8 @@ mkdir -p $HOME/bin
 echo "# Next line added for running QGIS in docker" >> ${HOME}/.bashrc
 echo "export \$PATH=\$PATH}:\${HOME}/bin" >> ${HOME}/.bashrc
 cp run-qgis-in-docker.sh ${HOME}/bin
-chmod +x ${HOME}/bin/run-run-qgis-in-docker.sh
-cp QGIS-2.0.Docker.desktop ${HOME}/share/applications/
+chmod +x ${HOME}/bin/run-qgis-in-docker.sh
+cp QGIS-2.0.Docker.desktop ${HOME}/.local/share/applications/
 
 echo "A shortcut was created to run your docker - "
 echo "you may need to reload your desktop"
