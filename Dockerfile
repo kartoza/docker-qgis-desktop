@@ -40,7 +40,7 @@ RUN apt-get -y update
 #RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 #RUN apt-get update
 
-RUN apt-get install -y qgis-mapserver qgis libcanberra-gtk-module
+RUN apt-get install -y qgis-mapserver qgis libcanberra-gtk-module saga otb-bin
 RUN apt-get purge
 EXPOSE 22
 EXPOSE 80
