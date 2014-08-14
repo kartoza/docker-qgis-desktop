@@ -42,10 +42,10 @@ docker build -t kartoza/docker-qgis-desktop git://github.com/kartoza/docker-qgis
 To run a container do:
 
 ```
-docker.io kill qgis-desktop
-docker.io rm qgis-desktop
+docker kill qgis-desktop
+docker rm qgis-desktop
 xhost +
-docker.io run --name="qgis-desktop" \
+docker run --name="qgis-desktop" \
 	-v ${HOME}/.config:/.config \
 	-v ${HOME}/.gtkrc-2.0:/.gtkrc-2.0 \
 	-v ${HOME}:/home/${USER} \
