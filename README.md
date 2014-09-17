@@ -44,8 +44,7 @@ to your `.bashrc` and create a desktop shortcut that will launch
 QGIS. 
 
 ```
-git clone 
-git://github.com/kartoza/docker-qgis-desktop
+git clone git://github.com/kartoza/docker-qgis-desktop
 cd docker-qgis-desktop
 ./build.sh
 ```
