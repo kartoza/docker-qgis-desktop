@@ -28,7 +28,8 @@ RUN git clone --depth 1 -b final-2_6_1 git://github.com/qgis/QGIS.git; \
     make install -j8; \
     cd /; \
     rm -rf /QGIS; \
-    rm -rf /build
+    rm -rf /build; \
+    ldconfig
  
 
 
