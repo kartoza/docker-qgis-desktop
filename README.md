@@ -29,9 +29,8 @@ desktop shortcut yourself by taking the resources from the git repo e.g.:
 
 
 ```
-sudo cp run-qgis-in-docker.sh /usr/local/bin
-sudo chmod +x ${HOME}/bin/run-qgis-in-docker.sh
-sudo cp QGIS-2.4.Docker.desktop /usr/share/applications/
+sudo cp run-qgis-2.8.0-in-docker.sh /usr/local/bin
+sudo cp QGIS-2.8.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local
 ```
 
@@ -66,7 +65,7 @@ xhost +
 # Users home is mounted as home
 # --rm will remove the container as soon as it ends
 
-docker run --rm --name="qgis-desktop-2-4" \
+docker run --rm --name="qgis-desktop-2-8-0" \
 	-i -t \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -79,11 +78,15 @@ The above is the content of run-qgis-in-docker.sh so you can just
 ./run-qgis-in-docker.sh
 ```
 
-Follow the instructions above to create a desktop shortcut. Then, when you click on the QGIS icon this script will run and start the container. 
+Follow the instructions above to create a desktop shortcut. Then, when you
+click on the QGIS icon this script will run and start the container. 
 
-Note that your home directory will be mounted in the container and thus accessible to QGIS. If you want other directories to be available, just add then to run-qgis-in-docker.sh with -v flags. 
+Note that your home directory will be mounted in the container and thus
+accessible to QGIS. If you want other directories to be available, just add
+then to run-qgis-in-docker.sh with -v flags. 
 
-If QGIS crashes or hangs it might leave an orphan docker process running. If you see the process with 
+If QGIS crashes or hangs it might leave an orphan docker process running. If
+you see the process with 
 ```
 docker ps
 ```
