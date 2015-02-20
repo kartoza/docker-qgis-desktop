@@ -38,9 +38,8 @@ sudo cp qgis-icon-60x60.png /usr/local
 ## Build the image yourself:
 
 Clone the repo to your local system and then run the ``build.sh`` 
-script - it will create a launcher script in `~/bin`, add `~/bin/`
-to your `.bashrc` and create a desktop shortcut that will launch
-QGIS. 
+script - it will create a launcher script in `/usr/local/bin`
+and create a desktop shortcut that will launch QGIS. 
 
 ```
 git clone git://github.com/kartoza/docker-qgis-desktop
@@ -55,6 +54,10 @@ To build the image do:
 ```
 docker build -t kartoza/qgis-desktop git://github.com/kartoza/docker-qgis-desktop
 ```
+
+If you follow this approach you will need to create the 
+application launcher yourself, manually. Consult the sources in this
+repository for more details on how to do that.
 
 # Run a container
 
@@ -73,9 +76,9 @@ docker run --rm --name="qgis-desktop-2-8-0" \
 	kartoza/qgis-desktop:latest 
 xhost -
 ```
-The above is the content of run-qgis-in-docker.sh so you can just
+The above is the content of run-qgis-2.8.0-in-docker.sh so you can just
 ```
-./run-qgis-in-docker.sh
+./run-qgis-2.8.0-in-docker.sh
 ```
 
 Follow the instructions above to create a desktop shortcut. Then, when you
