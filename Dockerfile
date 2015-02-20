@@ -20,6 +20,14 @@ RUN yum install -y yum-utils; yum-builddep -y qgis; yum install -y \
      automake \
      meld
 
+WORKDIR /tmp
+RUN yum install -y wget; \
+    wget http://corefonts.sourceforge.net/msttcorefonts-2.5-1.spec; \
+    yum install -y rpm-build cabextract ttmkfdir
+RUN rpmbuild -bb msttcorefonts-2.5-1.spec
+RUN yum install -y /root/rpmbuild/RPMS/noarch/msttcorefonts-2.5-1.noarch.rpm
+
+
 # Clone the 2.6 branch
 RUN git clone --depth 1 -b final-2_6_1 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
