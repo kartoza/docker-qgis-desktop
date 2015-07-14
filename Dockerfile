@@ -22,7 +22,7 @@ RUN yum install -y yum-utils; yum-builddep -y qgis; yum install -y \
 
 
 # Clone the 2.8 branch
-RUN git clone --depth 1 -b final-2_8_2 git://github.com/qgis/QGIS.git; \
+RUN git clone --depth 1 -b final-2.10 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
     cmake /QGIS -DQWT_INCLUDE_DIR=/usr/include/qwt -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_LIBRARY=/usr/lib64/libpython2.7.so -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 -DQWT_LIBRARY=/usr/lib/libqwt.so -DGRASS_INCLUDE_DIR=/usr/include -DWITH_INTERNAL_QWTPOLAR=OFF -DQSCINTILLA_INCLUDE_DIR=/usr/include/ -DQWT_LIBRARY=/usr/lib64/libqwt.so; \
