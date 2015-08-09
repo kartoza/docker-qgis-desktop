@@ -29,8 +29,8 @@ desktop shortcut yourself by taking the resources from the git repo e.g.:
 
 
 ```
-sudo cp run-qgis-2.8.2-in-docker.sh /usr/local/bin
-sudo cp QGIS-2.8.2.Docker.desktop /usr/share/applications/
+sudo cp run-qgis-2.8.3-in-docker.sh /usr/local/bin
+sudo cp QGIS-2.8.3.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local
 ```
 
@@ -68,7 +68,7 @@ xhost +
 # Users home is mounted as home
 # --rm will remove the container as soon as it ends
 
-docker run --rm --name="qgis-desktop-2-8-2" \
+docker run --rm --name="qgis-desktop-2.8.3" \
 	-i -t \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -78,7 +78,7 @@ xhost -
 ```
 The above is the content of run-qgis-2.8.0-in-docker.sh so you can just
 ```
-./run-qgis-2.8.2-in-docker.sh
+./run-qgis-2.8.3-in-docker.sh
 ```
 
 Follow the instructions above to create a desktop shortcut. Then, when you
