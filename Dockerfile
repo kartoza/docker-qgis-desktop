@@ -23,7 +23,7 @@ RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 
 # Clone the 2.8 branch
-RUN git clone --depth 1 -b final-2_10 git://github.com/qgis/QGIS.git; \
+RUN git clone --depth 1 -b release-2_10 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
     cmake .. -DQWT_INCLUDE_DIR=/usr/include/qwt -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr/local/qgis-master -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 -DQWT_LIBRARY=/usr/lib/libqwt.so
