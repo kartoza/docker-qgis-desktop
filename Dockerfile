@@ -9,6 +9,7 @@ MAINTAINER Tim Sutton<tim@kartoza.com>
 #ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 
 RUN echo "deb     http://qgis.org/debian wheezy main" >> /etc/apt/sources.list
+RUN echo "deb-src     http://qgis.org/debian wheezy main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv DD45F6C3
 RUN gpg --export --armor DD45F6C3 | apt-key add -
 
@@ -22,7 +23,7 @@ RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 
 # Clone the 2.8 branch
-RUN git clone --depth 1 -b final-2.10 git://github.com/qgis/QGIS.git; \
+RUN git clone --depth 1 -b final-2_10 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
     cmake .. -DQWT_INCLUDE_DIR=/usr/include/qwt -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr/local/qgis-master -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 -DQWT_LIBRARY=/usr/lib/libqwt.so
