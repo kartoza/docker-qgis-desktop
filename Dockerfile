@@ -72,7 +72,16 @@ RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 RUN git clone --depth 1 -b master git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
-        cmake /QGIS -DQWT_INCLUDE_DIR=/usr/include/qwt -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 -DQWT_LIBRARY=/usr/lib/libqwt.so -DWITH_SERVER=ON -DBUILD_TESTING=OFF -DWITH_INTERNAL_QWTPOLAR; \
+        cmake /QGIS \
+        -DQWT_INCLUDE_DIR=/usr/include/qwt \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \
+        -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 \
+        -DQWT_LIBRARY=/usr/lib/libqwt.so \
+        -DWITH_SERVER=ON \
+        -DBUILD_TESTING=OFF \
+        -DWITH_INTERNAL_QWTPOLAR=ON; \
     make install -j4; \
     cd /; \
     rm -rf /QGIS; \
