@@ -63,7 +63,9 @@ RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake c
   qdbus qt4-doc-html qt4-linguist-tools qt4-qmake qtchooser qtcore4-l10n samba-libs sip-dev spawn-fcgi txt2tags ucf unixodbc unixodbc-dev \
   uuid-dev x11-common x11-xkb-utils x11proto-core-dev x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev \
   x11proto-input-dev x11proto-kb-dev x11proto-xext-dev x11proto-xf86vidmode-dev xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-encodings \
-  xfonts-scalable xfonts-utils xkb-data xorg-sgml-doctools xserver-common xtrans-dev xvfb xz-utils zlib1g-dev apache2 libqca2-dev libqca2 libqca2-plugin-ossl
+  xfonts-scalable xfonts-utils xkb-data xorg-sgml-doctools xserver-common xtrans-dev xvfb xz-utils zlib1g-dev \
+  apache2 libapache2-mod-fcgid \
+  libqca2-dev libqca2 libqca2-plugin-ossl
 
 RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
