@@ -39,10 +39,14 @@ RUN yum install -y wget; \
 RUN rpmbuild -bb msttcorefonts-2.5-1.spec
 RUN yum install -y /root/rpmbuild/RPMS/noarch/msttcorefonts-2.5-1.noarch.rpm
 
-
-
 # Called on first run of docker
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
+
+# Slim down things by clearing apt cache dir, removing all dev packages etc.
+RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN remove `dpkg -l | grep -e \-dev | sed 's/ii//g' \
+    | sed 's/rc//g' | sed 's/^ *//;s/ *$//' \
+    | sed 's/ \+ /\t/g' | cut -f 1`
 
 CMD /start.sh
