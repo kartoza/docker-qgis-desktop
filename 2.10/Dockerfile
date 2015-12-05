@@ -41,7 +41,7 @@ RUN chmod 0755 /start.sh
 
 # Slim down things by clearing apt cache dir, removing all dev packages etc.
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN dpkg -r `dpkg -l | grep -e \-dev | sed 's/ii//g' \
+RUN apt-get remove `dpkg -l | grep -e \-dev | sed 's/ii//g' \
     | sed 's/rc//g' | sed 's/^ *//;s/ *$//' \
     | sed 's/ \+ /\t/g' | cut -f 1`
 
