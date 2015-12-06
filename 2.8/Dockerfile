@@ -20,7 +20,7 @@ RUN apt-get -y update
 
 RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake cmake-data comerr-dev cpp cpp-4.9 debhelper doxygen dpkg-dev fakeroot file flex \
   fontconfig fontconfig-config fonts-dejavu-core g++ g++-4.9 gcc gcc-4.9 gettext gettext-base git git-man graphviz grass-core grass-dev \
-  groff-base hdf5-helpers icu-devtools init-system-helpers intltool-debian iso-codes krb5-multidev libarchive13 libarmadillo4 libarpack2 \
+  groff-base hdf5-helpers icu-devtools init-system-helpers iso-codes krb5-multidev libarchive13 libarmadillo4 libarpack2 \
   libasan1 libasn1-8-heimdal libasound2 libasound2-data libasprintf0c2 libasyncns0 libatomic1 libaudio2 libavahi-client3 libavahi-common-data \
   libavahi-common3 libavcodec56 libavdevice55 libavformat56 libavresample2 libavutil54 libbison-dev libblas-common libblas3 libbluray1 \
   libbsd0 libc-dev-bin libc6-dev libcairo2 libcdio-cdda1 libcdio-paranoia1 libcdio13 libcdt5 libcf0 libcgraph6 libcilkrts5 libclang1-3.5 \
