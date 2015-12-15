@@ -6,7 +6,7 @@ xhost +
 #	-v ${HOME}/.config:/.config \
 #	-v ${HOME}/.gtkrc-2.0:/.gtkrc-2.0 \
 
-docker run --rm --name="qgis-desktop-2.8.4 \
+docker run --rm --name="qgis-desktop-2.8.4" \
 	-i -t \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
