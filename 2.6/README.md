@@ -46,6 +46,7 @@ QGIS.
 ```
 git clone git://github.com/kartoza/docker-qgis-desktop
 cd docker-qgis-desktop
+cd 2.6
 ./build.sh
 ```
 
