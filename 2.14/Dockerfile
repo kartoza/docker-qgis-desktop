@@ -17,8 +17,7 @@ RUN apt-get -y update
 
 # #-------------Application Specific Stuff ----------------------------------------------------
 
-
-RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake cmake-data comerr-dev cpp cpp-4.9 debhelper doxygen dpkg-dev fakeroot file flex \
+RUN apt-get --fix-missing -y install binutils bison bsdmainutils build-essential bzip2 cmake cmake-data comerr-dev cpp cpp-4.9 debhelper doxygen dpkg-dev fakeroot file flex \
   fontconfig fontconfig-config fonts-dejavu-core g++ g++-4.9 gcc gcc-4.9 gettext gettext-base git git-man graphviz grass-core grass-dev \
   groff-base hdf5-helpers icu-devtools init-system-helpers intltool-debian iso-codes krb5-multidev libarchive13 libarmadillo4 libarpack2 \
   libasan1 libasn1-8-heimdal libasound2 libasound2-data libasprintf0c2 libasyncns0 libatomic1 libaudio2 libavahi-client3 libavahi-common-data \
@@ -59,7 +58,7 @@ RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake c
   libxkbfile1 libxml2 libxml2-dev libxmu6 libxmuu1 libxpm4 libxrender1 libxshmfence-dev libxshmfence1 libxt6 libxtst6 libxvidcore4 \
   libxxf86vm-dev libxxf86vm1 lighttpd linux-libc-dev locales m4 make man-db mesa-common-dev mime-support mysql-common odbcinst \
   odbcinst1debian2 patch perl perl-modules pkg-config po-debconf poppler-utils proj-data pyqt4-dev-tools python python-dev python-minimal \
-  python-numpy python-qscintilla2 python-qt4 python-qt4-dev python-sip python-sip-dev python-talloc python2.7 python2.7-dev python2.7-minimal \
+  python-numpy python-qscintilla2 python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev python-talloc python2.7 python2.7-dev python2.7-minimal \
   qdbus qt4-doc-html qt4-linguist-tools qt4-qmake qtchooser qtcore4-l10n samba-libs sip-dev spawn-fcgi txt2tags ucf unixodbc unixodbc-dev \
   uuid-dev x11-common x11-xkb-utils x11proto-core-dev x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev \
   x11proto-input-dev x11proto-kb-dev x11proto-xext-dev x11proto-xf86vidmode-dev xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-encodings \
@@ -67,11 +66,18 @@ RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake c
   apache2 libapache2-mod-fcgid \
   libqca2-dev libqca2 libqca2-plugin-ossl
 
+# additional installs get from qgis INSTALL.md. mainly to allow loading of some plugins
+RUN apt-get -y install bison cmake doxygen flex git graphviz grass-dev libexpat1-dev libfcgi-dev libgdal1-dev libgeos-dev libgsl0-dev \
+  libopenscenegraph-dev libosgearth-dev libpq-dev libproj-dev libqca2-dev libqca2-plugin-ossl libqscintilla2-dev libqt4-dev libqt4-opengl-dev \
+  libqt4-sql-sqlite libqtwebkit-dev libqwt-dev libspatialindex-dev libspatialite-dev libsqlite3-dev python-pyspatialite lighttpd locales pkg-config \
+  poppler-utils pyqt4-dev-tools python python-dev python-gdal python-qscintilla2 python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev \
+  qt4-doc-html spawn-fcgi txt2tags xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb cmake-curses-gui python-psycopg2 python-matplotlib
+
 RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 
-# Clone the master branch
-RUN git clone --depth 1 -b master git://github.com/qgis/QGIS.git; \
+# Clone the 2.14 branch
+RUN git clone --depth 1 -b release-2_14 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
         cmake /QGIS \
@@ -84,7 +90,7 @@ RUN git clone --depth 1 -b master git://github.com/qgis/QGIS.git; \
         -DWITH_SERVER=ON \
         -DBUILD_TESTING=OFF \
         -DWITH_INTERNAL_QWTPOLAR=ON; \
-    make install -j4; \
+    make install -j8; \
     cd /; \
     rm -rf /QGIS; \
     rm -rf /build; \
@@ -92,14 +98,13 @@ RUN git clone --depth 1 -b master git://github.com/qgis/QGIS.git; \
  
 WORKDIR /tmp
 
-# Slim down things by clearing apt cache dir, removing all dev packages etc.
-RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get remove `dpkg -l | grep -e \-dev | sed 's/ii//g' \
-    | sed 's/rc//g' | sed 's/^ *//;s/ *$//' \
-    | sed 's/ \+ /\t/g' | cut -f 1`
-
 # Called on first run of docker
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
 
+# Slim down things by clearing apt cache dir, removing all dev packages etc.
+RUN apt-get clean; apt-get autoclean; apt-get autoremove; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get remove -qq -m 	`dpkg -l | grep -e \-dev | sed 's/ii//g' | sed 's/^ *//;s/ *$//' | sed 's/ \+ /\t/g' | cut -f 1`
+
 CMD /start.sh
+
