@@ -71,7 +71,7 @@ RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 
 # Clone the master branch
-RUN git clone --depth 1 -b release-2_8_4 git://github.com/qgis/QGIS.git; \
+RUN git clone --depth 1 -b release-2_8 git://github.com/qgis/QGIS.git; \
     mkdir /build; \
     cd /build; \
         cmake /QGIS \
