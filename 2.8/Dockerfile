@@ -1,5 +1,5 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
-FROM debian:stable
+FROM debian:jessie
 MAINTAINER Tim Sutton<tim@kartoza.com>
 
 
