@@ -8,10 +8,10 @@ MAINTAINER Tim Sutton<tim@kartoza.com>
 # # Or comment this line out if you do not with to use caching
 #ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 
-RUN echo "deb     http://qgis.org/debian wheezy main" >> /etc/apt/sources.list
-RUN echo "deb-src     http://qgis.org/debian wheezy main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv DD45F6C3
-RUN gpg --export --armor DD45F6C3 | apt-key add -
+RUN echo "deb     http://qgis.org/debian jessie main" >> /etc/apt/sources.list
+RUN echo "deb-src     http://qgis.org/debian jessie main" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv 3FF5FFCAD71472C4
+RUN gpg --export --armor 3FF5FFCAD71472C4 | apt-key add -
 
 RUN apt-get -y update
 
@@ -67,6 +67,9 @@ RUN apt-get -y install binutils bison bsdmainutils build-essential bzip2 cmake c
   apache2 libapache2-mod-fcgid \
   libqca2-dev libqca2 libqca2-plugin-ossl
 
+# some common used qgis related python packages
+RUN apt-get -y install python-qt4-sql python-gdal python-psycopg2 python-pyspatialite
+
 RUN chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 RUN chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
 
@@ -89,14 +92,13 @@ RUN git clone --depth 1 -b master git://github.com/qgis/QGIS.git; \
     rm -rf /QGIS; \
     rm -rf /build; \
     ldconfig
- 
+
 WORKDIR /tmp
 
 # Slim down things by clearing apt cache dir, removing all dev packages etc.
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN apt-get remove `dpkg -l | grep -e \-dev | sed 's/ii//g' \
-    | sed 's/rc//g' | sed 's/^ *//;s/ *$//' \
-    | sed 's/ \+ /\t/g' | cut -f 1`
+RUN apt-get -y remove `dpkg -l | grep -e \-dev | sed 's/ii//g' \
+    | sed 's/^ *//;s/ *$//' | sed 's/ \+ /\t/g' | cut -f 1`
 
 # Called on first run of docker
 ADD start.sh /start.sh
