@@ -1,25 +1,5 @@
-#--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
-FROM fedora:21
+FROM kartoza/qgis-base:v2
 MAINTAINER Tim Sutton<tim@kartoza.com>
-
-RUN yum -y update
-
-# Yum-utils provides yum-builddep command
-RUN yum install -y yum-utils; yum-builddep -y qgis; yum install -y \
-     gdal.x86_64 \
-     gdal-python.x86_64 \
-     python-psycopg2.x86_64 \
-     grass-devel.x86_64 \
-     qscintilla-python.x86_64 \
-     qscintilla-devel.x86_64 \
-     qscintilla.x86_64 PyQt4-qsci-api.x86_64 \
-     git \
-     gcc \
-     gcc-c++ \
-     make \
-     automake \
-     meld
-
 
 # Clone the 2.6 branch
 RUN git clone --depth 1 -b final-2_6_1 git://github.com/qgis/QGIS.git; \
@@ -32,21 +12,8 @@ RUN git clone --depth 1 -b final-2_6_1 git://github.com/qgis/QGIS.git; \
     rm -rf /build; \
     ldconfig
  
-WORKDIR /tmp
-RUN yum install -y wget; \
-    wget http://corefonts.sourceforge.net/msttcorefonts-2.5-1.spec; \
-    yum install -y rpm-build cabextract ttmkfdir
-RUN rpmbuild -bb msttcorefonts-2.5-1.spec
-RUN yum install -y /root/rpmbuild/RPMS/noarch/msttcorefonts-2.5-1.noarch.rpm
-
 # Called on first run of docker
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
-
-# Slim down things by clearing apt cache dir, removing all dev packages etc.
-RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN dpkg -r `dpkg -l | grep -e \-dev | sed 's/ii//g' \
-    | sed 's/rc//g' | sed 's/^ *//;s/ *$//' \
-    | sed 's/ \+ /\t/g' | cut -f 1`
 
 CMD /start.sh
