@@ -15,7 +15,7 @@ RUN git clone --depth 1 -b release-2_14 git://github.com/qgis/QGIS.git; \
         -DWITH_SERVER=ON \
         -DBUILD_TESTING=OFF \
         -DWITH_INTERNAL_QWTPOLAR=ON; \
-    make install -j8; \
+    make install -j2; \
     cd /; \
     rm -rf /QGIS; \
     rm -rf /build; \
