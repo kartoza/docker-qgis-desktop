@@ -1,15 +1,23 @@
-docker-qgis-desktop
-===================
+QGIS Desktop for Docker
+========================
 
 A simple docker container that runs QGIS desktop
 
-Note this is still experimental and probably does not represent
+**Note:** this is still experimental and probably does not represent
 the most optimal way to do this. Current limitations:
 
 * Qt4 theme is not carried over nicely
 * Uses xhost + which is not ideal since it allows all remote
   hosts to display windows on your X display (probably not
   an issue if you are on a local network).
+
+This image is also the base image for the [QGIS-Server docker image](https://github.com/kartoza/docker-qgis-server).
+
+# License
+
+[GPL V2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+
+
 
 # Example use with docker compose
 
