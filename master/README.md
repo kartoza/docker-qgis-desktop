@@ -15,14 +15,11 @@ the most optimal way to do this. Current limitations:
 
 Here is a contrived example showing how you can run QGIS Desktop
 from in a docker container using docker-compose. Note you may
-need to run ``xhost +`` first:
+need to run ``xhost +`` first. Example ``docker-compose`` follows:
 
 ```
-cat docker-compose.yml 
 db:
   image: kartoza/postgis:9.4-2.1
-  #volumes:
-      #- ./pg/postgres_data:/var/lib/postgresql
   environment:
     - USERNAME=docker
     - PASS=docker
@@ -51,6 +48,15 @@ docker-compose up
 
 You should see QGIS start up and appear on your local display. For more detailed approaches 
 to using and building the QGIS container, see below.
+
+**Note:** The database in the above example is stateless (it will be deleted when
+running ``docker-compose rm``). If you want to connect to the PG database from docker
+use the following info:
+
+* host: db
+* database: gis
+* user: docker
+* password: docker
 
 # Getting the image
 
