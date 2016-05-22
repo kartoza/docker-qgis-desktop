@@ -7,9 +7,11 @@ A simple docker container that runs QGIS desktop
 the most optimal way to do this. Current limitations:
 
 * Qt4 theme is not carried over nicely
-* Uses xhost + which is not ideal since it allows all remote
+* Uses ``xhost +`` which is not ideal since it allows all remote
   hosts to display windows on your X display (probably not
-  an issue if you are on a local network).
+  an issue if you are on a local network). **Note:** See #16 - you
+  can avoid using ``xhost +`` by running the script at the docker
+  user. You will need to modify my scripts accordingly.
 
 This image is also the base image for the [QGIS-Server docker image](https://github.com/kartoza/docker-qgis-server).
 
