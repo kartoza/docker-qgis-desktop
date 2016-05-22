@@ -11,6 +11,46 @@ the most optimal way to do this. Current limitations:
   hosts to display windows on your X display (probably not
   an issue if you are on a local network).
 
+# Example use with docker compose
+
+Here is a contrived example showing how you can run QGIS Desktop
+from in a docker container using docker-compose. Note you may
+need to run ``xhost +`` first:
+
+```
+cat docker-compose.yml 
+db:
+  image: kartoza/postgis:9.4-2.1
+  #volumes:
+      #- ./pg/postgres_data:/var/lib/postgresql
+  environment:
+    - USERNAME=docker
+    - PASS=docker
+  
+qgisdesktop:
+  image: kartoza/qgis-desktop:2.14
+  hostname: qgis-server
+  volumes:
+    # Wherever you want to mount your data from
+    - ./gis:/gis
+    # Unix socket for X11
+    - /tmp/.X11-unix:/tmp/.X11-unix
+  links:
+    - db:db
+  environment: 
+    - DISPLAY=unix:1
+  command: /usr/bin/qgis
+
+```
+
+To run the example do:
+
+```
+docker-compose up
+```
+
+You should see QGIS start up and appear on your local display. For more detailed approaches 
+to using and building the QGIS container, see below.
 
 # Getting the image
 
