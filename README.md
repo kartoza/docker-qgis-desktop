@@ -12,6 +12,7 @@ the most optimal way to do this. Current limitations:
   an issue if you are on a local network). **Note:** See #16 - you
   can avoid using ``xhost +`` by running the script at the docker
   user. You will need to modify my scripts accordingly.
+* To use in Mac OS X docker host environment, you need to [install an X11 server like XQuartz and SOCAT to tunnel the connection](http://kartoza.com/how-to-run-a-linux-gui-application-on-osx-using-docker/).
 
 This image is also the base image for the [QGIS-Server docker image](https://github.com/kartoza/docker-qgis-server).
 
