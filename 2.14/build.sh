@@ -1,5 +1,5 @@
 #!/bin/bash
-docker build -t kartoza/qgis-desktop:2.14 .
+docker build -t kartoza/qgis-desktop:2.14.4 .
 sudo cp run-qgis-2.14ltr-in-docker.sh /usr/local/bin
 sudo cp QGIS-2.14LTR.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local

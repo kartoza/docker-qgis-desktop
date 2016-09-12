@@ -1,31 +1,19 @@
-FROM kartoza/qgis-base:v2
+FROM ubuntu:16.04
 MAINTAINER Tim Sutton<tim@kartoza.com>
+# Based off work by Patrick Valsecchi<patrick.valsecchi@camptocamp.com>
 
-# Clone the 2.14 branch
-RUN git clone --depth 1 -b release-2_14 git://github.com/qgis/QGIS.git; \
-    mkdir /build; \
-    cd /build; \
-        cmake /QGIS \
-        -DQWT_INCLUDE_DIR=/usr/include/qwt \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \
-        -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 \
-        -DQWT_LIBRARY=/usr/lib/libqwt.so \
-        -DWITH_SERVER=ON \
-        -DBUILD_TESTING=OFF \
-        -DWITH_INTERNAL_QWTPOLAR=ON; \
-    make install -j8; \
-    cd /; \
-    rm -rf /QGIS; \
-    rm -rf /build; \
-    ldconfig
- 
-WORKDIR /tmp
+ENV LANG C
 
-# Called on first run of docker
-ADD start.sh /start.sh
-RUN chmod 0755 /start.sh
+COPY build /build/scripts
+RUN /build/scripts/getDeps.sh && \
+    /build/scripts/getCode.sh && \
+    /build/scripts/make.sh && \
+    /build/scripts/clean.sh
 
-CMD /start.sh
+# A few tunable variables for QGIS
+ENV QGIS_DEBUG 5
+ENV QGIS_LOG_FILE /proc/self/fd/1
+ENV PGSERVICEFILE /project/pg_service.conf
+ENV QGIS_PROJECT_FILE /project/project.qgs
 
+CMD ["/start.sh"]
