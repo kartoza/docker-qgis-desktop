@@ -20,7 +20,7 @@ This will consume the most bandwidth for the initial build but
 will be easy to update thereafter. 
 
 ```
-docker pull kartoza/qgis-desktop
+docker pull kartoza/qgis-desktop:LTR
 ```
 
 
