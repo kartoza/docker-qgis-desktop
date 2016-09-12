@@ -52,7 +52,7 @@ cd docker-qgis-desktop
 To build the image do:
 
 ```
-docker build -t kartoza/qgis-desktop-2.14 git://github.com/kartoza/docker-qgis-desktop
+docker build -t kartoza/qgis-desktop:2.14 git://github.com/kartoza/docker-qgis-desktop
 ```
 
 If you follow this approach you will need to create the 

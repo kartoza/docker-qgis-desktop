@@ -1,7 +1,7 @@
 #!/bin/bash
 docker build -t kartoza/qgis-desktop:master .
 sudo cp run-qgis-master-in-docker.sh /usr/local/bin
-sudo cp QGIS-Master.Docker.desktop /usr/share/applications/
+sudo cp QGIS-master.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local
 
 echo "A shortcut was created to run your docker - "

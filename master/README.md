@@ -11,52 +11,6 @@ the most optimal way to do this. Current limitations:
   hosts to display windows on your X display (probably not
   an issue if you are on a local network).
 
-# Example use with docker compose
-
-Here is a contrived example showing how you can run QGIS Desktop
-from in a docker container using docker-compose. Note you may
-need to run ``xhost +`` first. Example ``docker-compose`` follows:
-
-```
-db:
-  image: kartoza/postgis:9.4-2.1
-  environment:
-    - USERNAME=docker
-    - PASS=docker
-  
-qgisdesktop:
-  image: kartoza/qgis-desktop:2.14
-  hostname: qgis-server
-  volumes:
-    # Wherever you want to mount your data from
-    - ./gis:/gis
-    # Unix socket for X11
-    - /tmp/.X11-unix:/tmp/.X11-unix
-  links:
-    - db:db
-  environment: 
-    - DISPLAY=unix:1
-  command: /usr/bin/qgis
-
-```
-
-To run the example do:
-
-```
-docker-compose up
-```
-
-You should see QGIS start up and appear on your local display. For more detailed approaches 
-to using and building the QGIS container, see below.
-
-**Note:** The database in the above example is stateless (it will be deleted when
-running ``docker-compose rm``). If you want to connect to the PG database from docker
-use the following info:
-
-* host: db
-* database: gis
-* user: docker
-* password: docker
 
 # Getting the image
 
@@ -66,7 +20,7 @@ This will consume the most bandwidth for the initial build but
 will be easy to update thereafter. 
 
 ```
-docker pull kartoza/qgis-desktop
+docker pull kartoza/qgis-desktop:LTR
 ```
 
 
@@ -76,7 +30,7 @@ desktop shortcut yourself by taking the resources from the git repo e.g.:
 
 ```
 sudo cp run-qgis-master-in-docker.sh /usr/local/bin
-sudo cp QGIS-2.8.Docker.desktop /usr/share/applications/
+sudo cp QGIS-2.14LTR.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local
 ```
 
@@ -98,7 +52,7 @@ cd docker-qgis-desktop
 To build the image do:
 
 ```
-docker build -t kartoza/qgis-desktop git://github.com/kartoza/docker-qgis-desktop
+docker build -t kartoza/qgis-desktop:master git://github.com/kartoza/docker-qgis-desktop
 ```
 
 If you follow this approach you will need to create the 
@@ -119,7 +73,7 @@ docker run --rm --name="qgis-desktop-master" \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=unix$DISPLAY \
-	kartoza/qgis-desktop:latest 
+	kartoza/qgis-desktop:master
 xhost -
 ```
 The above is the content of run-qgis-master-in-docker.sh so you can just
