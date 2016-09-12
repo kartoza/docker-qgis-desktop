@@ -15,4 +15,5 @@ USER_NAME=`ls -lah /home/ | tail -1 | awk '{print $9}'`
 
 groupadd -g $GROUP_ID qgis
 useradd --shell /bin/bash --uid $USER_ID --gid $GROUP_ID $USER_NAME
+export LD_LIBRARY_PATH=/usr/lib
 su $USER_NAME -c "/usr/bin/qgis"
