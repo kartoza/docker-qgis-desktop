@@ -17,3 +17,4 @@ ENV PGSERVICEFILE /project/pg_service.conf
 ENV QGIS_PROJECT_FILE /project/project.qgs
 
 CMD ["/start.sh"]
+
