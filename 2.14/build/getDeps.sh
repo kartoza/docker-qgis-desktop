@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
-
+apt-get -y update
+apt-get install -y software-properties-common
+add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 apt-get -y update
 
 # #-------------Application Specific Stuff ----------------------------------------------------
