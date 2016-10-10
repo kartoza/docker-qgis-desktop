@@ -10,7 +10,7 @@ cmake /build/QGIS \
     -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \
     -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt4 \
     -DQWT_LIBRARY=/usr/lib/libqwt.so \
-    -DWITH_DESKTOP=OFF \
+    -DWITH_DESKTOP=ON \
     -DWITH_SERVER=ON \
     -DBUILD_TESTING=OFF \
     -DWITH_INTERNAL_QWTPOLAR=ON
