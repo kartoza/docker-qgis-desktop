@@ -10,6 +10,10 @@ RUN /build/scripts/getDeps.sh && \
     /build/scripts/make.sh && \
     /build/scripts/clean.sh
 
+# Called on first run of docker
+ADD start.sh /start.sh
+RUN chmod 0755 /start.sh
+
 # A few tunable variables for QGIS
 ENV QGIS_DEBUG 5
 ENV QGIS_LOG_FILE /proc/self/fd/1
