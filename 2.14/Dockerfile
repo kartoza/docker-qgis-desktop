@@ -20,5 +20,7 @@ ENV QGIS_LOG_FILE /proc/self/fd/1
 ENV PGSERVICEFILE /project/pg_service.conf
 ENV QGIS_PROJECT_FILE /project/project.qgs
 
+ADD start.sh /start.sh
+RUN chmod +x /start.sh
 CMD ["/start.sh"]
 
