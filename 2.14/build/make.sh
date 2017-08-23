@@ -18,7 +18,7 @@ cmake /build/QGIS \
 make install -j8
 ldconfig
 
-strip /usr/bin/qgis_mapserv.fcgi
+#strip /usr/bin/qgis_mapserv.fcgi
 strip `find /usr/lib/ -name "libqgis*" -type f`
 strip `find  /usr/share/qgis/ -name "*.so" -type f`
 
