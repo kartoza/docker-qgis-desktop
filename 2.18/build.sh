@@ -1,5 +1,5 @@
 #!/bin/bash
-docker build -t kartoza/qgis-desktop:2.18.10 .
+docker build -t kartoza/qgis-desktop:2.18.12 .
 #docker build -t kartoza/qgis-desktop:LTR .
 sudo cp run-qgis-2.18ltr-in-docker.sh /usr/local/bin
 sudo cp QGIS-2.18LTR.Docker.desktop /usr/share/applications/
