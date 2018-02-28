@@ -19,3 +19,4 @@ do
   cd -
   docker push kartoza/qgis-desktop:$DIR
 done
+docker push kartoza/qgis-desktop:LTR
