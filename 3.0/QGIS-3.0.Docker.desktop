@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=QGIS 3.0.0 in Docker
+GenericName=QGIS 3.0 in Docker
+Comment=GIS 3.0 in Docker
+Exec=/usr/local/bin/run-qgis-3.0-in-docker.sh %U
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/shp;
+Icon=/usr/local/qgis-icon-60x60.png
+Categories=Science,
