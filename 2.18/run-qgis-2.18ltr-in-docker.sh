@@ -3,6 +3,7 @@ xhost +
 docker run --rm --name="qgis-desktop-ltr" \
 	-i -t \
 	-v ${HOME}:/home/${USER} \
+	-v ${HOME}/qgis_plugins/python:/usr/share/qgis/python/ \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=unix$DISPLAY \
 	kartoza/qgis-desktop:LTR
