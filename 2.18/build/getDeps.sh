@@ -15,7 +15,7 @@ LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update &&  \
     lighttpd locales pkg-config poppler-utils pyqt4-dev-tools python python-dev \
     python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev \
     spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb \
-    python-pip gdal-bin python-gdal pyqt4.qsci-dev python-qscintilla2
+    python-pip gdal-bin python-gdal pyqt4.qsci-dev python-qscintilla2 python-pyspatialite
 
 pip install requests psycopg2 jinja2 pygments
 
