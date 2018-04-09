@@ -29,8 +29,8 @@ desktop shortcut yourself by taking the resources from the git repo e.g.:
 
 
 ```
-sudo cp run-qgis-2.14ltr-in-docker.sh /usr/local/bin
-sudo cp QGIS-2.14LTR.Docker.desktop /usr/share/applications/
+sudo cp run-qgis-2.18ltr-in-docker.sh /usr/local/bin
+sudo cp QGIS-2.18LTR.Docker.desktop /usr/share/applications/
 sudo cp qgis-icon-60x60.png /usr/local
 ```
 
