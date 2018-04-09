@@ -17,7 +17,7 @@ LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update &&  \
     spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb \
     python-pip gdal-bin python-gdal pyqt4.qsci-dev python-qscintilla2
 
-pip install requests psycopg2 jinja2
+pip install requests psycopg2 jinja2 pygments
 
 chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
