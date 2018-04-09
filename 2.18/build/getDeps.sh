@@ -14,7 +14,10 @@ LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update &&  \
     libqtwebkit-dev libqwt-dev libspatialindex-dev libspatialite-dev libsqlite3-dev \
     lighttpd locales pkg-config poppler-utils pyqt4-dev-tools python python-dev \
     python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev \
-    spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb 
+    spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb \
+    python-pip
+
+pip install requests osgeo
 
 chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
