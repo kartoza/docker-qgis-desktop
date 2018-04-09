@@ -15,9 +15,9 @@ LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update &&  \
     lighttpd locales pkg-config poppler-utils pyqt4-dev-tools python python-dev \
     python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev \
     spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb \
-    python-pip gdal-bin python-gdal pyqt4.qsci-dev
+    python-pip gdal-bin python-gdal pyqt4.qsci-dev 
 
-pip install requests psycopg2 osgeo
+pip install requests psycopg2 jinja2
 
 chmod -R a+w /usr/lib/x86_64-linux-gnu/qt4/plugins/designer/
 chmod -R a+w /usr/lib/python2.7/dist-packages/PyQt4/uic/widget-plugins/
