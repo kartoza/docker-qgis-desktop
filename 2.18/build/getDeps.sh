@@ -13,7 +13,7 @@ LC_ALL=C DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y \
     libqscintilla2-dev libqt4-dev libqt4-opengl-dev libqt4-sql-sqlite \
     libqtwebkit-dev libqwt-dev libspatialindex-dev libspatialite-dev libsqlite3-dev \
     lighttpd locales pkg-config poppler-utils pyqt4-dev-tools python python-dev \
-    python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev \
+    python-qt4 python-qt4-dev python-qt4-sql python-sip python-sip-dev python-setuptools \
     spawn-fcgi xauth xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable xvfb \
     python-pip gdal-bin python-gdal pyqt4.qsci-dev python-qscintilla2 python-pyspatialite
 
