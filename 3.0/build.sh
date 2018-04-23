@@ -1,5 +1,5 @@
 #!/bin/bash
-docker build -t kartoza/qgis-desktop:3.0 .
+docker build -t samtwesa/qgis-desktop:3.0 .
 sudo cp run-qgis-3.0-in-docker.sh /usr/local/bin
 sudo cp qgis-icon-60x60.png /usr/local
 

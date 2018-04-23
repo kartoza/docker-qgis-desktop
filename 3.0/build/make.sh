@@ -15,7 +15,7 @@ cmake /build/QGIS \
     -DBUILD_TESTING=OFF \
     -DWITH_INTERNAL_QWTPOLAR=ON
 
-make install -j8
+make install -j4
 ldconfig
 
 strip /usr/bin/qgis_mapserv.fcgi
