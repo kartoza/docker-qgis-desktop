@@ -1,5 +1,8 @@
 #!/bin/bash
 set -e
+
+echo 'Acquire::http {Proxy "http://138.197.5.83:9090";}' > /etc/apt/apt.conf.d/30proxy;
+
 apt-get -y update
 apt-get install -y software-properties-common
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable

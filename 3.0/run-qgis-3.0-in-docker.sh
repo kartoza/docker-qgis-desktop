@@ -5,5 +5,5 @@ docker run --rm --name="qgis-desktop-3.0" \
 	-v ${HOME}:/home/${USER} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-e DISPLAY=unix$DISPLAY \
-	kartoza/qgis-desktop:3.0
+	samtwesa/qgis-desktop:3.0
 xhost -

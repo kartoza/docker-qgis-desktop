@@ -1,20 +1,18 @@
-FROM ubuntu:16.04
-MAINTAINER Tim Sutton<tim@kartoza.com>
-# Based off work by Patrick Valsecchi<patrick.valsecchi@camptocamp.com>
+FROM qgis/qgis3-build-deps:final-3_0_1
 
-ENV LANG C
+MAINTAINER Tim Sutton<tim@kartoza.com>
+# Based off work by Denis Rouzaud <denis.rouzaud@gmail.com>
+
+ENV CC=/usr/lib/ccache/clang
+ENV CXX=/usr/lib/ccache/clang++
+ENV QT_SELECT=5
 
 COPY build /build/scripts
-RUN /build/scripts/getDeps.sh && \
-    /build/scripts/getCode.sh && \
+
+RUN /build/scripts/getCode.sh && \
     /build/scripts/make.sh && \
     /build/scripts/clean.sh
 
-# A few tunable variables for QGIS
-ENV QGIS_DEBUG 5
-ENV QGIS_LOG_FILE /proc/self/fd/1
-ENV PGSERVICEFILE /project/pg_service.conf
-ENV QGIS_PROJECT_FILE /project/project.qgs
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
