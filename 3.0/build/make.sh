@@ -6,7 +6,7 @@ cd /build/release
 
 cmake /build/QGIS \
     -GNinja \
-	-DWITH_STAGED_PLUGINS=ON \
+	-DWITH_STAGED_PLUGINS=OFF \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DWITH_GRASS=ON \
 	-DSUPPRESS_QT_WARNINGS=ON \
