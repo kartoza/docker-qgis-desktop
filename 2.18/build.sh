@@ -21,5 +21,6 @@ docker tag kartoza/qgis-desktop:${MAJOR}.${MINOR}.${BUGFIX} kartoza/qgis-desktop
 #docker tag kartoza/qgis-desktop:${MAJOR}.${MINOR}.${BUGFIX} kartoza/qgis-desktop:latest
 docker push kartoza/qgis-desktop:${MAJOR}.${MINOR}.${BUGFIX}
 docker push kartoza/qgis-desktop:${MAJOR}.${MINOR}
+docker push kartoza/qgis-desktop:LTR
 # We should rather push the 3.x image as latest
 #docker push kartoza/qgis-desktop:latest
