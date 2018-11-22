@@ -10,7 +10,7 @@ the most optimal way to do this. Current limitations:
 * Uses ``xhost +`` which is not ideal since it allows all remote
   hosts to display windows on your X display (probably not
   an issue if you are on a local network). **Note:** See #16 - you
-  can avoid using ``xhost +`` by running the script at the docker
+  can avoid using ``xhost +`` by running the script as the docker
   user. You will need to modify my scripts accordingly.
 * To use in Mac OS X docker host environment, you need to [install an X11 server like XQuartz and SOCAT to tunnel the connection](http://kartoza.com/how-to-run-a-linux-gui-application-on-osx-using-docker/).
 
@@ -25,7 +25,7 @@ This image is also the base image for the [QGIS-Server docker image](https://git
 # Example use with docker compose
 
 Here is a contrived example showing how you can run QGIS Desktop
-from in a docker container using docker-compose. Note you may
+from a docker container using docker-compose. Note you may
 need to run ``xhost +`` first. Example ``docker-compose`` follows:
 
 ```
@@ -144,7 +144,7 @@ click on the QGIS icon this script will run and start the container.
 
 Note that your home directory will be mounted in the container and thus
 accessible to QGIS. If you want other directories to be available, just add
-then to run-qgis-in-docker.sh with -v flags. 
+them to run-qgis-in-docker.sh with -v flags. 
 
 If QGIS crashes or hangs it might leave an orphan docker process running. If
 you see the process with 
