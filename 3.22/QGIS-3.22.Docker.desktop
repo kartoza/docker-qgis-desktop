@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=QGIS 3.22 in Docker
+GenericName=QGIS 3.22 in Docker
+Comment=QGIS 3.22 in Docker
+Exec=/home/samweli/Workspace/Tools/docker-qgis-desktop/3.22/run-qgis-3.22-in-docker.sh %U
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/shp;
+Icon=/home/samweli/Workspace/Tools/docker-qgis-desktop/3.22/qgis-icon-60x60.png
+Categories=Science,
