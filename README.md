@@ -1,6 +1,15 @@
 QGIS Desktop for Docker
 ========================
 
+### DEPRECATED
+
+
+**Note:** This project is deprecated, please see our replacement for this project here: https://github.com/kartoza/qgis-desktop-docker
+
+
+### DEPRECATED
+
+
 A simple docker container that runs QGIS desktop
 
 **Note:** this is still experimental and probably does not represent
